@@ -14,6 +14,13 @@ local:
 #   region: us-east-1
 #   bucket: your_own_bucket-<%= Rails.env %>
 
+digitalocean:
+  service: S3
+  access_key_id: <%= ENV["DO_SPACES_KEY"] %>
+  secret_access_key: <%= ENV["DO_SPACES_SECRET"] %>
+  region: <%= ENV["DO_SPACES_REGION"] %>
+  bucket: <%= ENV["DO_SPACES_BUCKET"] %>
+  endpoint: <%= ENV["DO_SPACES_ENDPOINT"] %>
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS

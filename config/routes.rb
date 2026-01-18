@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -7,4 +9,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # Mount Sidekiq web interface
+  mount Sidekiq::Web => '/sidekiq'
+
+  resources :notes, only: [:index, :create, :update, :destroy]
+
 end
