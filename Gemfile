@@ -51,3 +51,5 @@ gem "kamal", "~> 2.10"
 gem "sidekiq", "~> 8.1"
 
 gem 'clerk-sdk-ruby', '~> 3.0', require: 'clerk'
+
+gem "dotenv-rails", "~> 3.2"

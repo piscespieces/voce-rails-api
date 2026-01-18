@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
-  include Clerk::Authenticatable
+  # NOTE: Clerk::Authenticatable uses helper_method which doesn't exist in API mode.
+  # Instead, we access the Clerk session directly via request.env["clerk"]
+  # which is set by the Clerk::RackMiddlewareV2
 
   before_action :authenticate_user!
 
@@ -7,19 +9,21 @@ class ApplicationController < ActionController::API
 
   private
 
+  def clerk
+    request.env["clerk"]
+  end
+
   def authenticate_user!
-    if clerk.session.nil?
+    # clerk.user_id is provided by the Clerk middleware
+    # It extracts the user ID from the session JWT automatically
+    unless clerk&.user_id
       render json: { error: 'Unauthorized' }, status: :unauthorized
       return
     end
 
-    # clerk.session is the claims hash from the verifying the token
-    # 'sub' is the Subject (User ID)
-    user_clerk_id = clerk.session['sub']
-
-    @current_user = User.find_or_create_by!(clerk_id: user_clerk_id)
-  rescue StandardError => e
+    @current_user = User.find_or_create_by!(clerk_id: clerk.user_id)
+  rescue => e
     Rails.logger.error "Authentication error: #{e.message}"
-    render json: { error: 'Authentication failed' }, status: :unauthorized
+    render json: { error: 'Authentication failed', details: e.message }, status: :unauthorized
   end
 end

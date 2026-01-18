@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   resources :notes, only: [:index, :create, :update, :destroy]
 
+  get '/profile', to: 'profile#show'
 end

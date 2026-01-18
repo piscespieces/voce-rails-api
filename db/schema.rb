@@ -56,11 +56,9 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_17_235152) do
 
   create_table "users", force: :cascade do |t|
     t.string "clerk_id"
-    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["clerk_id"], name: "index_users_on_clerk_id", unique: true
-    t.index ["email"], name: "index_users_on_email"
   end
 
   create_table "webhooks", force: :cascade do |t|
