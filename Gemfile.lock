@@ -111,6 +111,8 @@ GEM
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
+    faraday-multipart (1.2.0)
+      multipart-post (~> 2.0)
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
     globalid (1.3.0)
@@ -151,6 +153,7 @@ GEM
     minitest (6.0.1)
       prism (~> 1.5)
     msgpack (1.8.0)
+    multipart-post (2.4.1)
     mutex_m (0.3.0)
     net-http (0.9.1)
       uri (>= 0.11.1)
@@ -300,6 +303,8 @@ DEPENDENCIES
   clerk-sdk-ruby (~> 3.0)
   debug
   dotenv-rails (~> 3.2)
+  faraday (~> 2.0)
+  faraday-multipart (~> 1.0)
   kamal (~> 2.10)
   pg (~> 1.1)
   puma (>= 5.0)

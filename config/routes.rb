@@ -13,7 +13,14 @@ Rails.application.routes.draw do
   # Mount Sidekiq web interface
   mount Sidekiq::Web => '/sidekiq'
 
-  resources :notes, only: [:index, :create, :update, :destroy]
+  resources :notes, only: [:index, :create, :update, :destroy, :show] do
+    post :forward, on: :member
+  end
+  resources :webhooks do
+    collection do
+      post :test
+    end
+  end
 
   get '/profile', to: 'profile#show'
 end

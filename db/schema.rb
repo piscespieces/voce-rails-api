@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_01_17_235152) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_20_033405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_17_235152) do
     t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "duration"
     t.index ["user_id"], name: "index_notes_on_user_id"
     t.index ["webhook_id"], name: "index_notes_on_webhook_id"
   end
@@ -69,6 +70,7 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_17_235152) do
     t.datetime "last_used_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
     t.index ["user_id"], name: "index_webhooks_on_user_id"
   end
 

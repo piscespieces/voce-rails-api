@@ -53,3 +53,6 @@ gem "sidekiq", "~> 8.1"
 gem 'clerk-sdk-ruby', '~> 3.0', require: 'clerk'
 
 gem "dotenv-rails", "~> 3.2"
+
+gem "faraday", "~> 2.0"
+gem "faraday-multipart", "~> 1.0"
