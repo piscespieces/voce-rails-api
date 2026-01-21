@@ -46,7 +46,7 @@ group :development do
 end
 
 
-gem "kamal", "~> 2.10"
+
 
 gem "sidekiq", "~> 8.1"
 
@@ -56,3 +56,5 @@ gem "dotenv-rails", "~> 3.2"
 
 gem "faraday", "~> 2.0"
 gem "faraday-multipart", "~> 1.0"
+
+gem "aws-sdk-s3", "~> 1.212"
